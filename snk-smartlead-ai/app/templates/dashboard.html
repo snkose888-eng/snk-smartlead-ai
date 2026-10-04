@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>SNK Lead Paneli</title>
+<style>body{font-family:Arial,sans-serif;margin:35px;color:#082b57}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ddd;padding:10px;text-align:left}</style>
+</head><body><h1>SNK Dijital Medya – Lead Yönetim Paneli</h1>
+<table><tr><th>ID</th><th>İsim</th><th>Telefon</th><th>Mesaj</th><th>Tarih</th></tr>
+{% for lead in leads %}<tr><td>{{lead.id}}</td><td>{{lead.isim}}</td><td>{{lead.telefon}}</td><td>{{lead.mesaj}}</td><td>{{lead.tarih}}</td></tr>{% endfor %}
+</table></body></html>

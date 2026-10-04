@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="tr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SNK Dijital Medya | Akıllı Satış Asistanı</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:760px;margin:40px auto;padding:20px;background:#f3f5f7;color:#082b57}
+.card{background:white;padding:24px;border-radius:14px} input,textarea,button{width:100%;box-sizing:border-box;margin:7px 0;padding:12px}
+button{background:#082b57;color:white;border:0;border-radius:8px;font-weight:bold} h1{margin-top:0}
+</style></head>
+<body><div class="card"><h1>SNK Dijital Medya</h1><h2>Akıllı Satış Asistanı</h2>
+<textarea id="mesaj" placeholder="Reklam ve tanıtım hizmetlerimiz hakkında sorun..."></textarea>
+<button onclick="sor()">Sor</button><p id="yanit"></p><hr>
+<input id="isim" placeholder="İsim"><input id="telefon" placeholder="Telefon">
+<button onclick="kaydet()">İletişim bilgilerimi kaydet</button><p id="durum"></p></div>
+<script>
+async function sor(){let mesaj=document.getElementById('mesaj').value;
+let r=await fetch('/api/sohbet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mesaj})});
+let d=await r.json();document.getElementById('yanit').innerText=d.yanit||d.hata;}
+async function kaydet(){let isim=document.getElementById('isim').value,telefon=document.getElementById('telefon').value,mesaj=document.getElementById('mesaj').value;
+let r=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({isim,telefon,mesaj})});
+let d=await r.json();document.getElementById('durum').innerText=d.basari?'Kaydınız alındı.':d.hata;}
+</script></body></html>
