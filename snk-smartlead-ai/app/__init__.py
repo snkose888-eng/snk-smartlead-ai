@@ -11,7 +11,7 @@ def create_app():
     app.config.from_object(config)
 
     origins = app.config.get("CORS_ORIGINS", "*")
-    CORS(app, resources={r"/api/*": {"origins": origins}})
+    CORS(app)
 
     init_db(app)
     app.register_blueprint(bp)
