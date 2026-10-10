@@ -25,7 +25,7 @@ class AIService:
             response = requests.post(
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-                json={"model": "llama-3.1-8b-instant", "messages": messages},
+                json={"model": "openai/gpt-oss-120b", "messages": messages},
                 timeout=30,
             )
             response.raise_for_status()
